@@ -1,8 +1,24 @@
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import ProductList from "ecommerce_products/ProductList";
 import { useCartEvent, useCartStore } from "./cartStore";
 
 import "./index.css";
+
+const ProductList = React.lazy(() => import("ecommerce_products/ProductList"));
+
+const ProductListSkeleton = () => (
+  <div className="space-y-4">
+    {[1, 2, 3].map((i) => (
+      <div key={i} className="animate-pulse flex items-center justify-between p-4 bg-gray-200 rounded-lg">
+        <div className="flex flex-col gap-2">
+          <div className="h-6 bg-gray-300 rounded w-24"></div>
+          <div className="h-4 bg-gray-300 rounded w-16"></div>
+        </div>
+        <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+      </div>
+    ))}
+  </div>
+);
 
 function App() {
   const {
@@ -16,11 +32,13 @@ function App() {
   return (
     <div className="flex flex-col h-screen p-24 gap-2">
       <nav className="bg-gray-800 p-4 text-white">
-        <h1 className="text-3xl">Ecommerce App</h1>
+        <h1 className="text-3xl font-bold">Ecommerce App</h1>
       </nav>
       <main className="flex-1 flex gap-2">
         <section className="flex-1">
-          <ProductList />
+          <Suspense fallback={<ProductListSkeleton />}>
+            <ProductList />
+          </Suspense>
         </section>
         <aside className="flex-2 bg-gray-300 ">
           <div className="p-4">

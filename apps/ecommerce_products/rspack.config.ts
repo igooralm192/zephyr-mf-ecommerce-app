@@ -15,6 +15,7 @@ const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 const name = "ecommerce_products";
 
 export default withZephyr()({
+  mode: isDev ? "development" : "production",
   context: __dirname,
   entry: {
     main: "./src/index.ts",
@@ -31,8 +32,9 @@ export default withZephyr()({
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
       "Access-Control-Allow-Headers": "*",
+      'Cache-Control': 'public, max-age=31536000'
     },
-    
+    compress: true
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -43,8 +45,18 @@ export default withZephyr()({
 
   experiments: {
     css: true,
+    rspackFuture: {
+      bundlerInfo: {
+        force: false
+      }
+    }
   },
-
+  performance: {
+    maxAssetSize: 250000,
+    maxEntrypointSize: 250000,
+    hints: 'warning',
+  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -95,6 +107,9 @@ export default withZephyr()({
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {
+    minimize: true,
+    usedExports: true,
+    sideEffects: false,
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),
       new rspack.LightningCssMinimizerRspackPlugin({

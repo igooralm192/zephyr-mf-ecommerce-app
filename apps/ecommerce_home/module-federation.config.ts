@@ -1,4 +1,5 @@
 export const mfConfig = {
+  dts: false,
   name: "ecommerce_home",
   filename: "remoteEntry.js",
   exposes: {
