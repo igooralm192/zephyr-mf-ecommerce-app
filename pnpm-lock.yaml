@@ -37,6 +37,9 @@ importers:
       zephyr-rspack-plugin:
         specifier: ^0.0.50
         version: 0.0.50(webpack@5.100.2)
+      zustand:
+        specifier: ^5.0.6
+        version: 5.0.6(@types/react@19.1.8)(react@19.1.0)
     devDependencies:
       '@rspack/cli':
         specifier: ~1.2.0
@@ -95,6 +98,9 @@ importers:
       zephyr-rspack-plugin:
         specifier: ^0.0.50
         version: 0.0.50(webpack@5.100.2)
+      zustand:
+        specifier: ^5.0.6
+        version: 5.0.6(@types/react@19.1.8)(react@19.1.0)
     devDependencies:
       '@rspack/cli':
         specifier: ~1.2.0
@@ -153,6 +159,9 @@ importers:
       zephyr-rspack-plugin:
         specifier: ^0.0.50
         version: 0.0.50(webpack@5.100.2)
+      zustand:
+        specifier: ^5.0.6
+        version: 5.0.6(@types/react@19.1.8)(react@19.1.0)
     devDependencies:
       '@rspack/cli':
         specifier: ~1.2.0
@@ -195,16 +204,6 @@ importers:
         version: 10.9.2(@types/node@24.1.0)(typescript@5.8.3)
       typescript:
         specifier: ^5.7.3
-        version: 5.8.3
-
-  packages/cart:
-    dependencies:
-      zustand:
-        specifier: ^5.0.6
-        version: 5.0.6(@types/react@19.1.8)(react@19.1.0)
-    devDependencies:
-      typescript:
-        specifier: ^5.8.3
         version: 5.8.3
 
 packages:
@@ -3333,7 +3332,7 @@ snapshots:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
-  axios-retry@4.5.0(axios@1.11.0):
+  axios-retry@4.5.0(axios@1.11.0(debug@4.4.1)):
     dependencies:
       axios: 1.11.0(debug@4.4.1)
       is-retry-allowed: 2.2.0
@@ -5109,7 +5108,7 @@ snapshots:
   zephyr-agent@0.0.50:
     dependencies:
       axios: 1.11.0(debug@4.4.1)
-      axios-retry: 4.5.0(axios@1.11.0)
+      axios-retry: 4.5.0(axios@1.11.0(debug@4.4.1))
       cloudflare: 3.5.0
       debug: 4.4.1
       git-url-parse: 15.0.0

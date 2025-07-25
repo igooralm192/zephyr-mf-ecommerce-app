@@ -1,13 +1,16 @@
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
+import { ProductList } from "./ProductList";
 
-const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: products</div>
-    <div>Framework: react-19</div>
-  </div>
-);
+function App() {
+  return (
+    <div className="mt-10 mx-auto max-w-6xl">
+      <ProductList />
+    </div>
+  )
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
 
