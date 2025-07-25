@@ -2,11 +2,14 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 import { ProductList } from "./ProductList";
+import React from "react";
 
 function App() {
   return (
     <div className="mt-10 mx-auto max-w-6xl">
-      <ProductList />
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <ProductList />
+      </React.Suspense>
     </div>
   )
 }

@@ -1,10 +1,8 @@
-import { dependencies as deps } from "./package.json";
-
 export const mfConfig = {
-  name: "checkout",
+  name: "test",
   filename: "remoteEntry.js",
   exposes: {
-    "./CheckoutCart": "./src/CheckoutCart",
+    "./Test": "./src/Test.tsx",
   },
   shared: {
     react: {
@@ -15,15 +13,10 @@ export const mfConfig = {
     "react-dom": {
       singleton: true,
       requiredVersion: "19.1.0",
-      strictVersion: true,
-    },
-    "zustand": {
-      singleton: true,
-      requiredVersion: "5.0.6",
-      strictVersion: true,
-    },
+      strictVersion: true, 
+    }
   },
   remotes: {
     home: "home@http://localhost:8082/remoteEntry.js",
-  }
+  },
 };

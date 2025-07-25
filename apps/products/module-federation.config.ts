@@ -1,3 +1,7 @@
+import { dependencies as deps } from "./package.json";
+
+console.log(deps)
+
 export const mfConfig = {
   name: "products",
   filename: "remoteEntry.js",
@@ -7,20 +11,18 @@ export const mfConfig = {
   shared: {
     react: {
       singleton: true,
-      requiredVersion: false as const,
+      requiredVersion: "19.1.0",
+      strictVersion: true,
     },
     "react-dom": {
       singleton: true,
-      requiredVersion: false as const,
+      requiredVersion: "19.1.0",
+      strictVersion: true,
     },
     "zustand": {
       singleton: true,
-      requiredVersion: false as const,
-    },
-    './cartStore': {
-      eager: true,
-      singleton: true,
-      requiredVersion: false as const,
+      requiredVersion: "5.0.6",
+      strictVersion: true,
     },
   },
   remotes: {

@@ -1,10 +1,29 @@
 import "./index.css";
 
-import { useCartStore } from "home/cartStore";
-
+import { useCartStore, useCartEvent } from "home/cartStore";
 
 export function ProductList() {
-  const products = useCartStore(state => state.products);
+  const { dispatchAddProduct, dispatchClearProducts } = useCartEvent();
 
-  return <div className="border-2 border-red-500">ProductList {products.length}</div>;
+  const productsSize = useCartStore(state => state.products.length);
+
+  return (
+    <div>
+      <h2>ProductList {productsSize}</h2>
+      <button
+        type="button"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={() => dispatchAddProduct({ id: "1", name: "Product 1", price: 10 })}
+      >
+        Add product
+      </button>
+      <button
+        type="button"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={() => dispatchClearProducts()}
+      >
+        Clear cart
+      </button>
+    </div>
+  )
 }

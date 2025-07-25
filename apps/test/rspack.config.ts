@@ -22,24 +22,15 @@ export default withZephyr()({
   },
 
   devServer: {
-    
-    port: 8080,
+    port: 8083,
     historyApiFallback: true,
-    hot: true,
-    liveReload: true,
     watchFiles: [path.resolve(__dirname, "src")],
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Credentials': 'true',
-    }
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "checkout",
+    uniqueName: "test",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:8080/",
+    publicPath: "http://localhost:8083/",
   },
 
   experiments: {
@@ -87,11 +78,7 @@ export default withZephyr()({
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
-    new rspack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
     new ModuleFederationPlugin(mfConfig),
-    new rspack.ProgressPlugin({}),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {
