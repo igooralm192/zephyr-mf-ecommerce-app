@@ -1,5 +1,5 @@
 {
-  "name": "products",
+  "name": "ecommerce_home",
   "version": "0.0.1",
   "scripts": {
     "build": "NODE_ENV=production rspack build",
@@ -12,8 +12,8 @@
     "@rspack/core": "~1.2.0",
     "@rspack/plugin-react-refresh": "~1.0.1",
     "@tailwindcss/postcss": "^4.0.3",
-    "@types/react": "catalog:react19",
-    "@types/react-dom": "catalog:react19",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.1.0",
     "css-loader": "^7.1.2",
     "postcss": "^8.2.1",
@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "@module-federation/enhanced": "^0.8.9",
-    "react": "catalog:react19",
-    "react-dom": "catalog:react19",
-    "zephyr-rspack-plugin": "^0.0.50",
-    "zustand": "catalog:zustand"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zephyr-rspack-plugin": "^0.0.56",
+    "zustand": "^5.0.6"
   }
 }
