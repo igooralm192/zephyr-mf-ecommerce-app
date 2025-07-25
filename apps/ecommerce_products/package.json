@@ -29,5 +29,8 @@
     "react-dom": "^18.2.0",
     "zephyr-rspack-plugin": "^0.0.56",
     "zustand": "^5.0.6"
+  },
+  "zephyr:dependencies": {
+    "ecommerce_home": "zephyr:ecommerce_home@*"
   }
 }

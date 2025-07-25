@@ -3,7 +3,7 @@ import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
-
+import { withZephyr } from "zephyr-rspack-plugin";
 import { mfConfig } from "./module-federation.config";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -11,7 +11,9 @@ const isDev = process.env.NODE_ENV === "development";
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
-export default defineConfig({
+const name = "ecommerce_home";
+
+export default withZephyr()({
   context: __dirname,
   entry: {
     main: "./src/index.ts",
@@ -24,12 +26,17 @@ export default defineConfig({
     port: 8080,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "*",
+    }
   },
   output: {
-    // You need to set a unique value that is not equal to other applications
-    uniqueName: "ecommerce_home",
-    // publicPath must be configured if using manifest
-    publicPath: "http://localhost:8080/",
+    path: __dirname + '/dist',
+    uniqueName: name,
+    publicPath: 'auto',
+    filename: '[name].js',
   },
 
   experiments: {
@@ -76,8 +83,13 @@ export default defineConfig({
   plugins: [
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
+      filename: "index.html",
     }),
     new ModuleFederationPlugin(mfConfig),
+    new rspack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+    new rspack.ProgressPlugin({}),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {
