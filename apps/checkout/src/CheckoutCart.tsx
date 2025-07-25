@@ -1,6 +1,6 @@
 import "./index.css";
 
 
-export function Checkout() {
+export function CheckoutCart() {
     return <div>Checkout</div>
 }

@@ -5,9 +5,23 @@ export const mfConfig = {
     "./cartStore": "./src/cartStore.ts",
   },
   shared: {
-    react: {singleton: true},
-    'react-dom': {singleton: true},
-    'zustand': {singleton: true, eager: true},
+    react: {
+      singleton: true,
+      requiredVersion: false as const,
+    },
+    "react-dom": {
+      singleton: true,
+      requiredVersion: false as const,
+    },
+    "zustand": {
+      singleton: true,
+      requiredVersion: false as const,
+    },
+    'home/cartStore': {
+      eager: true,
+      singleton: true,
+      requiredVersion: false as const,
+    },
   },
   remotes: {
     checkout: "checkout@http://localhost:8080/remoteEntry.js",

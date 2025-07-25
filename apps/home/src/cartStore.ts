@@ -13,11 +13,9 @@ interface CartStore {
   clearProducts: () => void;
 }
 
-export function useCartStore() {
-  return create<CartStore>((set) => ({
-    products: [],
-    addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
-    removeProduct: (product) => set((state) => ({ products: state.products.filter((p) => p.id !== product.id) })),
-    clearProducts: () => set({ products: [] }),
-  }))()
-};
+export const useCartStore = create<CartStore>((set) => ({
+  products: [],
+  addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
+  removeProduct: (product) => set((state) => ({ products: state.products.filter((p) => p.id !== product.id) })),
+  clearProducts: () => set({ products: [] }),
+}));

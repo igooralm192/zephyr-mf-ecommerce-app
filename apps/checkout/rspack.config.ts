@@ -25,7 +25,7 @@ export default withZephyr()({
     port: 8080,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
-    headers:{
+    headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
@@ -88,6 +88,7 @@ export default withZephyr()({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new ModuleFederationPlugin(mfConfig),
+    new rspack.ProgressPlugin({}),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {

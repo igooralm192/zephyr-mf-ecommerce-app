@@ -2,11 +2,10 @@ export const mfConfig = {
   name: "checkout",
   filename: "remoteEntry.js",
   exposes: {
-    "./Checkout": "./src/Checkout.tsx",
+    "./CheckoutCart": "./src/CheckoutCart",
   },  
-  shared: {
-    react: {singleton: true},
-    'react-dom': {singleton: true},
-    'zustand': {singleton: true, eager: true},
-  },
+  shared: ['react', 'react-dom'],
+  remotes: {
+    home: "home@http://localhost:8082/remoteEntry.js",
+  }
 };

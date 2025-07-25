@@ -88,6 +88,7 @@ export default withZephyr()({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new ModuleFederationPlugin(mfConfig),
+    new rspack.ProgressPlugin({}),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {
