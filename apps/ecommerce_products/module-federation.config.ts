@@ -1,11 +1,10 @@
-import { dependencies as deps } from "./package.json";
 export const mfConfig = {
   name: "ecommerce_products",
   filename: "remoteEntry.js",
   exposes: {
     "./ProductList": "./src/ProductList",
   },
-  shared: ['react', 'react-dom', 'zustand'],
+  shared: ["react", "react-dom", "zustand"],
   remotes: {
     "ecommerce_home": "ecommerce_home@http://localhost:8080/remoteEntry.js",
   }

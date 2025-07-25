@@ -4,7 +4,7 @@ export const mfConfig = {
   exposes: {
     "./cartStore": "./src/cartStore",
   },
-  shared: ['react', 'react-dom', 'zustand'],
+  shared: ["react", "react-dom", "zustand"],
   remotes: {
     "ecommerce_products": "ecommerce_products@http://localhost:8081/remoteEntry.js",
   }
